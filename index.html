@@ -1,531 +1,545 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fahad Alanazi | English Trainer</title>
+  <title>Fahad Alanazi | Personal Profile</title>
   <style>
     :root {
-      --bg: #0b0d12;
-      --card: #121722;
-      --soft: #1a2231;
-      --text: #f4f6fb;
-      --muted: #aab3c5;
+      --bg: #080a0f;
+      --bg2: #101521;
+      --card: rgba(255,255,255,0.055);
+      --card2: rgba(255,255,255,0.085);
+      --text: #f5f3ee;
+      --muted: #aeb6c8;
       --line: rgba(255,255,255,0.12);
-      --accent: #d7b56d;
-      --accent-soft: rgba(215,181,109,0.14);
+      --gold: #d8b86f;
+      --gold2: #f3d99a;
+      --shadow: rgba(0,0,0,0.35);
+      --radius: 28px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(215,181,109,0.18), transparent 32%),
-        linear-gradient(135deg, #07080c 0%, #101520 55%, #07080c 100%);
+        radial-gradient(circle at top left, rgba(216,184,111,0.16), transparent 34%),
+        radial-gradient(circle at top right, rgba(255,255,255,0.06), transparent 28%),
+        linear-gradient(140deg, var(--bg) 0%, var(--bg2) 55%, #07080c 100%);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.75;
+      overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    body[dir="rtl"] { font-family: Arial, Tahoma, sans-serif; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page { width: min(1120px, 92%); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(8,10,15,0.74);
+      border-bottom: 1px solid var(--line);
     }
 
-    .page {
+    .nav-inner {
       width: min(1120px, 92%);
-      margin: 0 auto;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
     }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #111;
+      font-weight: 900;
+    }
+
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .lang-btn, .small-link {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+      font-size: 13px;
+    }
+
+    .lang-btn:hover, .small-link:hover { transform: translateY(-2px); border-color: rgba(216,184,111,0.55); }
 
     header {
-      min-height: 100vh;
+      min-height: calc(100vh - 64px);
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 42px;
       align-items: center;
-      padding: 60px 0;
+      padding: 54px 0 40px;
     }
 
-    .badge {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 14px;
-      border: 1px solid var(--line);
+      color: var(--gold);
+      background: rgba(216,184,111,0.12);
+      border: 1px solid rgba(216,184,111,0.24);
       border-radius: 999px;
-      color: var(--accent);
-      background: var(--accent-soft);
-      font-size: 14px;
-      margin-bottom: 22px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      animation: fadeUp 0.7s ease both;
     }
 
     h1 {
-      font-size: clamp(46px, 7vw, 86px);
+      font-size: clamp(44px, 8vw, 86px);
       line-height: 0.95;
       letter-spacing: -3px;
       margin-bottom: 22px;
+      animation: fadeUp 0.8s ease 0.05s both;
     }
 
-    .gold {
-      color: var(--accent);
-    }
+    body[dir="rtl"] h1 { letter-spacing: -1px; }
 
-    .hero-text {
+    .gold { color: var(--gold); }
+
+    .lead {
       color: var(--muted);
-      font-size: 19px;
+      font-size: 18px;
       max-width: 680px;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s ease 0.1s both;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 34px;
+      gap: 12px;
+      margin-bottom: 30px;
+      animation: fadeUp 0.8s ease 0.15s both;
     }
 
     .btn {
-      padding: 13px 18px;
-      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 16px;
       border: 1px solid var(--line);
-      background: var(--soft);
-      font-weight: 700;
+      background: rgba(255,255,255,0.06);
+      font-weight: 800;
       transition: 0.25s ease;
     }
 
     .btn.primary {
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
       color: #111;
-      border-color: var(--accent);
+      border-color: transparent;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      opacity: 0.92;
-    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 18px 38px rgba(0,0,0,0.22); }
 
-    .mini-stats {
+    .soft-points {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      gap: 12px;
+      animation: fadeUp 0.8s ease 0.2s both;
     }
 
-    .stat {
-      background: rgba(255,255,255,0.045);
+    .soft-point {
       border: 1px solid var(--line);
-      padding: 18px;
+      background: rgba(255,255,255,0.045);
       border-radius: 20px;
-    }
-
-    .stat strong {
-      display: block;
-      color: var(--accent);
-      font-size: 26px;
-      line-height: 1;
-    }
-
-    .stat span {
+      padding: 16px;
       color: var(--muted);
       font-size: 13px;
     }
 
-    .profile-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-      border: 1px solid var(--line);
-      border-radius: 34px;
-      padding: 30px;
-      box-shadow: 0 28px 80px rgba(0,0,0,0.35);
+    .soft-point b { display: block; color: var(--text); font-size: 15px; margin-bottom: 4px; }
+
+    .photo-wrap {
       position: relative;
+      animation: floatIn 0.9s ease 0.12s both;
+    }
+
+    .photo-card {
+      position: relative;
+      border-radius: 36px;
       overflow: hidden;
+      min-height: 610px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 90px var(--shadow);
     }
 
-    .profile-card::before {
-      content: "FA";
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 610px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: saturate(0.95) contrast(1.03);
+    }
+
+    .photo-card::after {
+      content: "";
       position: absolute;
-      right: -10px;
-      top: -28px;
-      font-size: 155px;
-      font-weight: 900;
-      color: rgba(255,255,255,0.035);
-      letter-spacing: -10px;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(8,10,15,0.88));
+      pointer-events: none;
     }
 
-    .avatar {
-      width: 130px;
-      height: 130px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, var(--accent), #fff2bd);
-      color: #111;
-      display: grid;
-      place-items: center;
-      font-size: 48px;
-      font-weight: 900;
-      margin-bottom: 24px;
-      position: relative;
-      z-index: 1;
+    .photo-caption {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2;
+      border: 1px solid var(--line);
+      background: rgba(8,10,15,0.62);
+      backdrop-filter: blur(14px);
+      border-radius: 24px;
+      padding: 18px;
     }
 
-    .profile-card h2 {
-      font-size: 30px;
-      margin-bottom: 8px;
-      position: relative;
-      z-index: 1;
-    }
+    body[dir="rtl"] .photo-caption { text-align: right; }
 
-    .profile-card p {
-      color: var(--muted);
-      margin-bottom: 18px;
-      position: relative;
-      z-index: 1;
-    }
+    .photo-caption h3 { font-size: 22px; margin-bottom: 4px; }
+    .photo-caption p { color: var(--muted); font-size: 14px; }
 
-    .info-list {
-      display: grid;
-      gap: 12px;
-      position: relative;
-      z-index: 1;
-    }
+    section { padding: 58px 0; }
 
-    .info-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .info-item b {
-      color: var(--text);
-    }
-
-    section {
-      padding: 54px 0;
-    }
-
-    .section-title {
-      margin-bottom: 26px;
-    }
-
-    .section-title span {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      letter-spacing: -1.5px;
-      margin-top: 6px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
+    .section-title { margin-bottom: 24px; }
+    .section-title span { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 12px; font-weight: 900; }
+    body[dir="rtl"] .section-title span { letter-spacing: 0; }
+    .section-title h2 { font-size: clamp(30px, 4vw, 46px); letter-spacing: -1px; margin-top: 5px; }
 
     .card {
-      background: rgba(255,255,255,0.055);
+      background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 24px;
+      border-radius: var(--radius);
+      padding: 26px;
+      transition: 0.25s ease;
     }
 
-    .card h3 {
-      font-size: 22px;
-      margin-bottom: 8px;
+    .card:hover { transform: translateY(-4px); background: var(--card2); border-color: rgba(216,184,111,0.28); }
+
+    .wide-text { color: var(--muted); font-size: 17px; max-width: 980px; }
+
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+    .journey { display: grid; gap: 16px; }
+
+    .journey-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 20px;
+      align-items: start;
     }
 
-    .card .date {
-      color: var(--accent);
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
+    .date { color: var(--gold); font-weight: 900; font-size: 14px; }
+    h3 { font-size: 22px; margin-bottom: 8px; }
+    p, li { color: var(--muted); }
 
-    .card p, .card li {
-      color: var(--muted);
-    }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
 
-    ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill {
-      padding: 9px 13px;
+    .chip {
+      padding: 10px 13px;
       border-radius: 999px;
-      background: var(--soft);
+      background: rgba(255,255,255,0.06);
       border: 1px solid var(--line);
       color: var(--muted);
       font-size: 14px;
     }
 
-    .timeline {
-      display: grid;
-      gap: 18px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 22px;
-      padding: 24px;
-      background: rgba(255,255,255,0.055);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-    }
-
-    .timeline-item .time {
-      color: var(--accent);
-      font-weight: 800;
-    }
-
-    .highlight {
-      background: linear-gradient(135deg, rgba(215,181,109,0.18), rgba(255,255,255,0.04));
-      border: 1px solid rgba(215,181,109,0.28);
-      border-radius: 30px;
-      padding: 34px;
-      margin-top: 18px;
-    }
-
-    .highlight h3 {
-      font-size: 28px;
-      margin-bottom: 12px;
+    .highlight-number {
+      color: var(--gold);
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 10px;
     }
 
     .contact-box {
       text-align: center;
-      padding: 50px 24px;
-      border-radius: 34px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(215,181,109,0.12));
+      background: linear-gradient(135deg, rgba(255,255,255,0.075), rgba(216,184,111,0.13));
       border: 1px solid var(--line);
-      margin-bottom: 50px;
+      border-radius: 34px;
+      padding: 46px 24px;
     }
 
-    .contact-box h2 {
-      font-size: 42px;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
-
-    .contact-box p {
-      color: var(--muted);
-      margin-bottom: 22px;
-    }
+    .contact-box h2 { font-size: clamp(32px, 5vw, 48px); line-height: 1.05; margin-bottom: 12px; }
+    .contact-box p { max-width: 680px; margin: 0 auto 22px; }
 
     footer {
+      border-top: 1px solid var(--line);
       color: var(--muted);
       text-align: center;
-      padding: 30px 0 50px;
-      border-top: 1px solid var(--line);
+      padding: 30px 0 44px;
+      font-size: 14px;
     }
 
-    @media (max-width: 820px) {
-      header,
-      .grid,
-      .timeline-item {
-        grid-template-columns: 1fr;
-      }
+    [data-animate] { opacity: 0; transform: translateY(20px); transition: 0.65s ease; }
+    [data-animate].show { opacity: 1; transform: translateY(0); }
 
-      header {
-        min-height: auto;
-        padding-top: 38px;
-      }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-      .mini-stats {
-        grid-template-columns: 1fr;
-      }
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(22px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
 
-      .contact-box h2 {
-        font-size: 32px;
-      }
+    @media (max-width: 900px) {
+      .small-link { display: none; }
+      header { grid-template-columns: 1fr; gap: 28px; padding-top: 34px; }
+      .photo-card, .photo-card img { min-height: 520px; }
+      .soft-points, .grid, .grid-3, .journey-item { grid-template-columns: 1fr; }
+      .journey-item { gap: 8px; }
+    }
+
+    @media (max-width: 520px) {
+      .page, .nav-inner { width: min(100% - 28px, 1120px); }
+      .nav-actions { gap: 7px; }
+      .lang-btn { padding: 8px 11px; }
+      h1 { font-size: 46px; letter-spacing: -2px; }
+      .lead { font-size: 16px; }
+      .photo-card, .photo-card img { min-height: 470px; }
+      .photo-card { border-radius: 28px; }
+      .card { padding: 22px; border-radius: 24px; }
+      section { padding: 44px 0; }
+      .actions .btn { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="brand-mark">FA</span>
+        <span>Fahad Alanazi</span>
+      </a>
+      <div class="nav-actions">
+        <a class="small-link" href="#about" data-en="About" data-ar="عني">About</a>
+        <a class="small-link" href="#journey" data-en="Journey" data-ar="رحلتي">Journey</a>
+        <a class="small-link" href="#contact" data-en="Contact" data-ar="تواصل">Contact</a>
+        <button class="lang-btn" id="langBtn" type="button">AR</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page" id="top">
     <header>
       <div>
-        <div class="badge">English Trainer • Applied Linguistics • TESOL</div>
-        <h1>Fahad<br><span class="gold">Alanazi</span></h1>
-        <p class="hero-text">
-          English trainer with experience in teaching, student support, customer service, and translation. I am interested in second language acquisition, TESOL, and applied linguistics. I focus on clear communication, practical learning, and helping students improve with confidence.
+        <div class="eyebrow" data-en="Personal Profile • Language • Technology" data-ar="ملف شخصي • لغة • تقنية">Personal Profile • Language • Technology</div>
+        <h1><span data-en="Fahad" data-ar="فهد">Fahad</span><br><span class="gold" data-en="Alanazi" data-ar="العنزي">Alanazi</span></h1>
+        <p class="lead" data-en="I work with people, language, and ideas. I am interested in learning, communication, and understanding how things work — in language, systems, and technology." data-ar="أعمل مع الناس واللغة والأفكار. أهتم بالتعلم والتواصل وفهم طريقة عمل الأشياء، سواء في اللغة أو الأنظمة أو التقنية.">
+          I work with people, language, and ideas. I am interested in learning, communication, and understanding how things work — in language, systems, and technology.
         </p>
         <div class="actions">
-          <a class="btn primary" href="mailto:fahad.alanazi@me.com">Contact Me</a>
-          <a class="btn" href="#experience">View Experience</a>
-          <a class="btn" href="#education">Education</a>
+          <a class="btn primary" href="Fahad-Alanazi-CV.pdf" target="_blank" data-en="Download CV" data-ar="تحميل السيرة الذاتية">Download CV</a>
+          <a class="btn" href="https://www.linkedin.com/in/fahad-alanazi-4a758218a" target="_blank" data-en="LinkedIn" data-ar="لينكدإن">LinkedIn</a>
+          <a class="btn" href="#contact" data-en="Contact" data-ar="تواصل معي">Contact</a>
         </div>
-        <div class="mini-stats">
-          <div class="stat"><strong>2024</strong><span>Started English training career</span></div>
-          <div class="stat"><strong>3</strong><span>Academic references available</span></div>
-          <div class="stat"><strong>UNSW</strong><span>Master offer holder</span></div>
+        <div class="soft-points">
+          <div class="soft-point"><b data-en="Language" data-ar="اللغة">Language</b><span data-en="English, communication, and learning." data-ar="الإنجليزية، التواصل، والتعلم.">English, communication, and learning.</span></div>
+          <div class="soft-point"><b data-en="Technology" data-ar="التقنية">Technology</b><span data-en="Devices, systems, AI tools, and problem solving." data-ar="الأجهزة، الأنظمة، أدوات الذكاء الاصطناعي، وحل المشكلات.">Devices, systems, AI tools, and problem solving.</span></div>
+          <div class="soft-point"><b data-en="Growth" data-ar="التطور">Growth</b><span data-en="A clear path built through experience and curiosity." data-ar="مسار واضح مبني على الخبرة والفضول.">A clear path built through experience and curiosity.</span></div>
         </div>
       </div>
-      <aside class="profile-card">
-        <div class="avatar">FA</div>
-        <h2>English Trainer</h2>
-        <p>Focused on teaching, learner progress, academic communication, and professional development.</p>
-        <div class="info-list">
-          <div class="info-item"><b>Email</b><span>fahad.alanazi@me.com</span></div>
-          <div class="info-item"><b>Phone</b><span>0567806737</span></div>
-          <div class="info-item"><b>Location</b><span>Saudi Arabia</span></div>
-          <div class="info-item"><b>IELTS</b><span>5.5</span></div>
-          <div class="info-item"><b>Interest</b><span>Second Language Acquisition</span></div>
+
+      <div class="photo-wrap">
+        <div class="photo-card">
+          <img src="profile.jpg" alt="Fahad Alanazi" />
+          <div class="photo-caption">
+            <h3 data-en="Personal Profile" data-ar="ملف شخصي">Personal Profile</h3>
+            <p data-en="A simple view of who I am, what I value, and where I am going." data-ar="صورة بسيطة عني، عن اهتماماتي، وعن المسار الذي أبنيه.">A simple view of who I am, what I value, and where I am going.</p>
+          </div>
         </div>
-      </aside>
+      </div>
     </header>
 
-    <section id="about">
+    <section id="about" data-animate>
       <div class="section-title">
-        <span>Profile</span>
-        <h2>About Me</h2>
+        <span data-en="About" data-ar="عني">About</span>
+        <h2 data-en="Who I Am" data-ar="من أنا">Who I Am</h2>
       </div>
-      <div class="highlight">
-        <h3>A clear academic and professional direction</h3>
-        <p>
-          I hold a bachelor’s degree in English from King Saud University. My experience includes English training, student supervision, customer service, and translation work at the International Students Office. My academic interest is second language acquisition, and my graduation research focused on the effect of age on second language acquisition.
+      <div class="card">
+        <p class="wide-text" data-en="I am Fahad Alanazi, an English graduate and English trainer from Saudi Arabia. My path connects language, teaching, communication, and personal development. I like to understand people, ideas, and systems. I am also interested in technology, devices, maintenance, programming, and AI tools. I see these interests as part of how I learn, solve problems, and keep improving." data-ar="أنا فهد العنزي، خريج لغة إنجليزية ومدرب لغة إنجليزية من السعودية. مساري يجمع بين اللغة، التعليم، التواصل، والتطوير الشخصي. أحب أفهم الناس والأفكار والأنظمة. كذلك أهتم بالتقنية، الأجهزة، الصيانة، البرمجة، وأدوات الذكاء الاصطناعي. أرى هذه الاهتمامات جزءًا من طريقتي في التعلم وحل المشكلات والتطور.">
+          I am Fahad Alanazi, an English graduate and English trainer from Saudi Arabia. My path connects language, teaching, communication, and personal development. I like to understand people, ideas, and systems. I am also interested in technology, devices, maintenance, programming, and AI tools. I see these interests as part of how I learn, solve problems, and keep improving.
         </p>
       </div>
     </section>
 
-    <section id="experience">
+    <section id="journey" data-animate>
       <div class="section-title">
-        <span>Experience</span>
-        <h2>Professional Experience</h2>
+        <span data-en="Journey" data-ar="رحلتي">Journey</span>
+        <h2 data-en="Professional Journey" data-ar="رحلتي المهنية">Professional Journey</h2>
       </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="time">Jun 2024 – Present</div>
+      <div class="journey">
+        <div class="card journey-item">
+          <div class="date" data-en="Jun 2024 – Present" data-ar="يونيو 2024 – الآن">Jun 2024 – Present</div>
           <div>
-            <h3>English Trainer</h3>
-            <p>Deliver English lessons, support student progress, supervise learners, follow up on results, and communicate with administration to solve student difficulties and improve the learning process.</p>
+            <h3 data-en="English Trainer" data-ar="مدرب لغة إنجليزية">English Trainer</h3>
+            <p data-en="This role strengthened my communication, teaching, student support, and ability to work with different learning needs." data-ar="هذا الدور طور مهاراتي في التواصل، التعليم، دعم الطلاب، والتعامل مع احتياجات تعليمية مختلفة.">This role strengthened my communication, teaching, student support, and ability to work with different learning needs.</p>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="time">Mar 2024 – Jun 2024</div>
+        <div class="card journey-item">
+          <div class="date" data-en="Mar 2024 – Jun 2024" data-ar="مارس 2024 – يونيو 2024">Mar 2024 – Jun 2024</div>
           <div>
-            <h3>Customer Service</h3>
-            <p>Handled customer inquiries, supported daily operations, solved problems professionally, and improved communication skills in a fast-paced work environment.</p>
+            <h3 data-en="Customer Service" data-ar="خدمة العملاء">Customer Service</h3>
+            <p data-en="This experience helped me deal with people, pressure, daily problems, and clear professional communication." data-ar="هذه التجربة ساعدتني في التعامل مع الناس والضغط والمشكلات اليومية والتواصل المهني الواضح.">This experience helped me deal with people, pressure, daily problems, and clear professional communication.</p>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="time">Aug 2023 – Jan 2024</div>
+        <div class="card journey-item">
+          <div class="date" data-en="Aug 2023 – Jan 2024" data-ar="أغسطس 2023 – يناير 2024">Aug 2023 – Jan 2024</div>
           <div>
-            <h3>Translator Trainee — KSU International Students Office</h3>
-            <p>Supported translation tasks, assisted with communication for international students, and gained practical experience in academic and administrative environments.</p>
+            <h3 data-en="Translator Trainee — KSU International Students Office" data-ar="متدرب ترجمة — مكتب الطلاب الدوليين بجامعة الملك سعود">Translator Trainee — KSU International Students Office</h3>
+            <p data-en="This training gave me experience in academic communication, translation, and working in an administrative environment." data-ar="هذا التدريب أعطاني خبرة في التواصل الأكاديمي والترجمة والعمل داخل بيئة إدارية.">This training gave me experience in academic communication, translation, and working in an administrative environment.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="education">
+    <section data-animate>
       <div class="section-title">
-        <span>Education</span>
-        <h2>Education & Admission</h2>
+        <span data-en="Education" data-ar="التعليم">Education</span>
+        <h2 data-en="Academic Path" data-ar="المسار الأكاديمي">Academic Path</h2>
       </div>
       <div class="grid">
         <div class="card">
-          <div class="date">Graduated Jan 2024</div>
-          <h3>Bachelor’s Degree in English</h3>
-          <p>King Saud University</p>
-          <ul>
-            <li>Graduation research: The effect of age on second language acquisition.</li>
-            <li>Academic interests: TESOL, applied linguistics, language learning, and student development.</li>
-          </ul>
+          <h3 data-en="Bachelor’s Degree in English" data-ar="بكالوريوس لغة إنجليزية">Bachelor’s Degree in English</h3>
+          <p data-en="King Saud University. My graduation research focused on the effect of age on second language acquisition." data-ar="جامعة الملك سعود. كان بحث تخرجي عن تأثير العمر على اكتساب اللغة الثانية.">King Saud University. My graduation research focused on the effect of age on second language acquisition.</p>
         </div>
         <div class="card">
-          <div class="date">Term 3, 2026</div>
-          <h3>Master Offer — UNSW Sydney</h3>
-          <p>Accepted to the Master of Applied Linguistics program at the University of New South Wales, with the possibility to study TESOL-related courses through the program structure.</p>
+          <h3 data-en="UNSW Sydney Offer" data-ar="قبول جامعة UNSW Sydney">UNSW Sydney Offer</h3>
+          <p data-en="I hold an offer for the Master of Applied Linguistics at UNSW Sydney, starting in Term 3, 2026." data-ar="لدي قبول في ماجستير اللغويات التطبيقية بجامعة UNSW Sydney، بداية من Term 3 لعام 2026.">I hold an offer for the Master of Applied Linguistics at UNSW Sydney, starting in Term 3, 2026.</p>
         </div>
       </div>
     </section>
 
-    <section>
+    <section data-animate>
       <div class="section-title">
-        <span>Strengths</span>
-        <h2>Core Skills</h2>
+        <span data-en="Skills" data-ar="المهارات">Skills</span>
+        <h2 data-en="What I Work With" data-ar="ما أعمل عليه">What I Work With</h2>
       </div>
-      <div class="grid">
-        <div class="card">
-          <h3>Teaching & Training</h3>
-          <div class="skills">
-            <span class="skill">English Teaching</span>
-            <span class="skill">Lesson Delivery</span>
-            <span class="skill">Student Support</span>
-            <span class="skill">Assessment Follow-up</span>
-            <span class="skill">Classroom Communication</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Professional Skills</h3>
-          <div class="skills">
-            <span class="skill">Communication</span>
-            <span class="skill">Customer Service</span>
-            <span class="skill">Problem Solving</span>
-            <span class="skill">Teamwork</span>
-            <span class="skill">Administration Support</span>
-            <span class="skill">Translation</span>
-          </div>
+      <div class="card">
+        <div class="chips">
+          <span class="chip" data-en="Communication" data-ar="التواصل">Communication</span>
+          <span class="chip" data-en="Teaching & Training" data-ar="التعليم والتدريب">Teaching & Training</span>
+          <span class="chip" data-en="Student Support" data-ar="دعم الطلاب">Student Support</span>
+          <span class="chip" data-en="Translation" data-ar="الترجمة">Translation</span>
+          <span class="chip" data-en="Problem Solving" data-ar="حل المشكلات">Problem Solving</span>
+          <span class="chip" data-en="Technology Understanding" data-ar="فهم التقنية">Technology Understanding</span>
+          <span class="chip" data-en="Devices & Maintenance" data-ar="الأجهزة والصيانة">Devices & Maintenance</span>
+          <span class="chip" data-en="Basic Programming Interest" data-ar="اهتمام بأساسيات البرمجة">Basic Programming Interest</span>
+          <span class="chip" data-en="AI Tools for Productivity" data-ar="أدوات الذكاء الاصطناعي للإنتاجية">AI Tools for Productivity</span>
         </div>
       </div>
     </section>
 
-    <section>
+    <section data-animate>
       <div class="section-title">
-        <span>Academic Direction</span>
-        <h2>Research & Interests</h2>
+        <span data-en="Interests" data-ar="الاهتمامات">Interests</span>
+        <h2 data-en="Things That Shape Me" data-ar="الأشياء التي تشكلني">Things That Shape Me</h2>
       </div>
-      <div class="grid">
-        <div class="card">
-          <h3>Second Language Acquisition</h3>
-          <p>I am interested in how learners acquire English as a second language, and how age, motivation, environment, and instruction can affect language development.</p>
-        </div>
-        <div class="card">
-          <h3>TESOL & Applied Linguistics</h3>
-          <p>My long-term goal is to develop my knowledge in TESOL and applied linguistics and use it to improve language teaching and learner support.</p>
-        </div>
-        <div class="card">
-          <h3>Academic References</h3>
-          <p>Three academic references are available upon request.</p>
-        </div>
-        <div class="card">
-          <h3>Medium of Instruction</h3>
-          <p>Official Medium of Instruction letter is available for academic and university communication when required.</p>
-        </div>
+      <div class="grid-3">
+        <div class="card"><h3 data-en="Language & Learning" data-ar="اللغة والتعلم">Language & Learning</h3><p data-en="I am interested in how people learn languages and how good communication can change learning." data-ar="أهتم بكيفية تعلم الناس للغات وكيف يستطيع التواصل الجيد أن يغير تجربة التعلم.">I am interested in how people learn languages and how good communication can change learning.</p></div>
+        <div class="card"><h3 data-en="Technology & Devices" data-ar="التقنية والأجهزة">Technology & Devices</h3><p data-en="I like understanding devices, systems, maintenance, and how technology can be used in daily life and work." data-ar="أحب فهم الأجهزة والأنظمة والصيانة وكيف يمكن استخدام التقنية في الحياة والعمل.">I like understanding devices, systems, maintenance, and how technology can be used in daily life and work.</p></div>
+        <div class="card"><h3 data-en="Growth" data-ar="التطور">Growth</h3><p data-en="I believe in learning step by step, improving myself, and building a clear personal and professional path." data-ar="أؤمن بالتعلم خطوة بخطوة، وتطوير نفسي، وبناء مسار شخصي ومهني واضح.">I believe in learning step by step, improving myself, and building a clear personal and professional path.</p></div>
       </div>
     </section>
 
-    <section id="contact">
+    <section data-animate>
+      <div class="section-title">
+        <span data-en="Highlights" data-ar="نقاط مختصرة">Highlights</span>
+        <h2 data-en="Quick Notes" data-ar="ملاحظات سريعة">Quick Notes</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card"><div class="highlight-number">01</div><p data-en="English trainer with experience in student support and communication." data-ar="مدرب لغة إنجليزية ولدي خبرة في دعم الطلاب والتواصل.">English trainer with experience in student support and communication.</p></div>
+        <div class="card"><div class="highlight-number">02</div><p data-en="IELTS 5.5, official Medium of Instruction letter, and academic references available." data-ar="درجة IELTS 5.5، وخطاب Medium of Instruction رسمي، وتوصيات أكاديمية متاحة.">IELTS 5.5, official Medium of Instruction letter, and academic references available.</p></div>
+        <div class="card"><div class="highlight-number">03</div><p data-en="Interested in language, technology, AI tools, and personal development." data-ar="مهتم باللغة، التقنية، أدوات الذكاء الاصطناعي، والتطوير الشخصي.">Interested in language, technology, AI tools, and personal development.</p></div>
+      </div>
+    </section>
+
+    <section id="contact" data-animate>
       <div class="contact-box">
-        <h2>Let’s Connect</h2>
-        <p>Open to opportunities in English training, education, training coordination, and academic development.</p>
+        <h2 data-en="Let’s Connect" data-ar="خلنا نتواصل">Let’s Connect</h2>
+        <p data-en="This profile is a simple view of who I am. For professional communication, you can reach me by email, phone, or LinkedIn." data-ar="هذا الملف يعطي صورة بسيطة عني. للتواصل المهني، يمكنك التواصل معي عبر الإيميل أو الهاتف أو لينكدإن.">This profile is a simple view of who I am. For professional communication, you can reach me by email, phone, or LinkedIn.</p>
         <div class="actions" style="justify-content:center; margin-bottom:0;">
-          <a class="btn primary" href="mailto:fahad.alanazi@me.com">Email Me</a>
-          <a class="btn" href="tel:0567806737">Call</a>
+          <a class="btn primary" href="mailto:fahad.alanazi@me.com" data-en="Email Me" data-ar="راسلني">Email Me</a>
+          <a class="btn" href="tel:0567806737" data-en="Call" data-ar="اتصال">Call</a>
+          <a class="btn" href="https://www.linkedin.com/in/fahad-alanazi-4a758218a" target="_blank" data-en="LinkedIn" data-ar="لينكدإن">LinkedIn</a>
         </div>
       </div>
     </section>
 
     <footer>
-      © 2026 Fahad Alanazi. Personal CV Website.
+      <span data-en="© 2026 Fahad Alanazi. Personal Profile Website." data-ar="© 2026 فهد العنزي. موقع ملف شخصي.">© 2026 Fahad Alanazi. Personal Profile Website.</span>
     </footer>
-  </div>
+  </main>
+
+  <script>
+    const langBtn = document.getElementById('langBtn');
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      document.querySelectorAll('[data-en]').forEach((el) => {
+        el.textContent = el.getAttribute(lang === 'ar' ? 'data-ar' : 'data-en');
+      });
+      langBtn.textContent = lang === 'ar' ? 'EN' : 'AR';
+    }
+
+    langBtn.addEventListener('click', () => {
+      setLanguage(currentLang === 'en' ? 'ar' : 'en');
+    });
+
+    const items = document.querySelectorAll('[data-animate]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.12 });
+
+    items.forEach((item) => observer.observe(item));
+  </script>
 </body>
 </html>
